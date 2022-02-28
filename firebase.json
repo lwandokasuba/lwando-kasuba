@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "lwando-kasuba",
     "public": "public",
     "ignore": [
       "firebase.json",
