@@ -1,3 +1,52 @@
-# lwando-kasuba
-
-Changed the markdown to see updates
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Lwando's Website</title>
+    <link rel="stylesheet" href="/public/index.css" />
+    <script>
+      function showText(id, delay) {
+        var elem = document.getElementById(id);
+        setTimeout(function () {
+          elem.style.visibility = "visible";
+        }, delay * 1000);
+      }
+      window.onload = function () {
+        showText("delayedText", 1);
+        showText("delayedText2", 3);
+        showText("delayedText3", 5);
+        showText("delayedText4", 7);
+      };
+    </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8926568799630130"
+     crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <section class="showcase">
+      <video src="/public/rol.mp4" muted loop autoplay></video>
+      <div class="overlay"></div>
+      <div class="text">
+        <div id="delayedText" style="visibility: hidden">
+          <h2>Always Creative</h2>
+        </div>
+        <div id="delayedText2" style="visibility: hidden">
+          <h3>I Aim To Surpass My Limits</h3>
+        </div>
+        <div id="delayedText3" style="visibility: hidden">
+          <div class="col-sm-10">
+            <p><strong>Get</strong> in touch.</p>
+          </div>
+        </div>
+        <div id="delayedText4" style="visibility: hidden">
+          <a
+            href="mailto:lwando.developer@gmail.com&subject=Mail from our Website"
+            >Email</a
+          >
+          <a href="tel:+260978538218">Contact</a>
+        </div>
+      </div>
+    </section>
+    <footer class="foot">Lwando Kasuba © 2023</footer>
+  </body>
+</html>
