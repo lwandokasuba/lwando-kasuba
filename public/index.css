@@ -1,36 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
-
 *
 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+}
+body
+{
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: #111;
+  color: #fff;
 }
 .showcase
 {
-  position: absolute;
-  right: 0;
-  width: 100%;
+  position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   padding: 100px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  overflow: hidden;
   background: #111;
-  transition: 0.5s;
-  z-index: 2;
 }
-.showcase.active
-{
-  right: 300px;
-}
-
 .showcase video
 {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -39,127 +33,132 @@
 .overlay
 {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #14c0d6ce;
   mix-blend-mode: overlay;
 }
 .text
 {
   position: relative;
-  z-index: 12;
-  animation-name: lwando;
+  z-index: 1;
+  max-width: 900px;
 }
-
-.text h2
+.text h1
 {
-  font-size: 5em;
+  font-size: clamp(2.25rem, 9vw, 5em);
   font-weight: 800;
-  color: #fff;
   line-height: 1em;
   text-transform: uppercase;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
-.text h3
+.text .tagline
 {
-  font-size: 4em;
+  font-size: clamp(1.5rem, 6.5vw, 4em);
   font-weight: 700;
-  color: #fff;
   line-height: 1em;
   text-transform: uppercase;
+  margin: 0;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.25);
 }
 .text p
 {
   font-size: 1.1em;
-  color: #fff;
   margin: 20px 0;
   font-weight: 400;
   max-width: 700px;
 }
-.text a
+.actions
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.button
 {
   display: inline-block;
   font-size: 1em;
   background: #fff;
-  padding: 10px 30px;
+  padding: 12px 30px;
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 500;
-  margin-top: 1px;
   color: #111;
   letter-spacing: 2px;
-  transition: 0.2s;
+  transition: letter-spacing 0.2s, background 0.2s, color 0.2s;
 }
-.text a:hover
+.button:hover
 {
   letter-spacing: 6px;
 }
-#delayedText 
+.button:focus-visible
 {
-  animation-name: lwando;
-  animation-duration: 2s;
-}
-#delayedText2
-{
-  transition: 0.5s;
-}
-#delayedText3 
-{
-  transition: 0.8s;
-}
-#delayedText4 
-{
-  transition: 1.2s;
+  outline: 3px solid #14c0d6;
+  outline-offset: 3px;
 }
 
-footer {
-    width: 100%;
-    text-align: center;
-    position: absolute;
-    z-index: 10;
-    bottom: 10px;
-    color: white;
+/* Staggered fade-up for the hero text; delay set per element via --delay */
+.reveal
+{
+  opacity: 0;
+  transform: translateY(20px);
+  animation: reveal 0.8s ease-out forwards;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes reveal
+{
+  to
+  {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+footer
+{
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.9em;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 991px)
 {
-  .showcase,
-  .showcase header
+  .showcase
   {
     padding: 40px;
   }
-  .text h2
+}
+
+@media (max-width: 480px)
+{
+  .showcase
   {
-    font-size: 3em;
+    padding: 24px 20px 60px;
   }
-  .text h3
+  .actions
   {
-    font-size: 2em;
+    flex-direction: column;
   }
-  a {
-    display: flex;
-    justify-content: space-between;
+  .button
+  {
+    text-align: center;
   }
 }
 
-@media (max-width: 400px)
+@media (prefers-reduced-motion: reduce)
 {
-  .showcase,
-  .showcase header
+  .reveal
   {
-    padding: 20px;
+    opacity: 1;
+    transform: none;
+    animation: none;
   }
-  .text h2
+  .button,
+  .button:hover
   {
-    font-size: 2em;
-  }
-  .text h3
-  {
-    font-size: 1em;
-  }
-  a {
-    display: flex;
-    justify-content: space-between;
+    transition: none;
+    letter-spacing: 2px;
   }
 }
